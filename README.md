@@ -1,64 +1,453 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## Requirement to run the project
+1. PHP minimum version 8.0
+2. Composer
+3. or use all in one php package like : XAMPP (PHP, MySql, Apache). make sure XAMPP minimum version : 8.0
+4. attention please :
+    please make sure to enable php gd extension, because this project require package from https://docs.laravel-excel.com/3.1/getting-started/installation.html.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+    if you are using xampp, here's how to enable it :
+    - open your xampp control panel
+    - click config button on apache 
+    - choose PHP (php.ini)
+    - and search for ;extension=gd
+    - remove ; sign
+    - and save it
+    - restart xampp control panel
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Step by step how to run 
+1. open this project with your favorite code editor, e.g VSCode
+2. run : composer install
+3. copy .env.example and rename it .env
+4. run : php artisan migrate
+5. run : php artisan jwt:secret
+6. run : php artisan serve
+7. open postman to start exploring endpoint
+8. postman endpoint attached : BE-Test-JasaMarga.json
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Available endpoints
+1. Register
+endpoint : 127.0.0.1:8000/api/auth/register
+method : POST
+required parameter :
+- fullname
+- username
+- password
+and the result simmilar like this :
+{
+    "message": "Register successfully"
+}
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+2. Login
+endpoint : 127.0.0.1:8000/api/auth/login
+method : POST
+required parameter :
+- username
+- password
+and the result simmilar like this :
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjE0NzUsImV4cCI6MTY5MTE2NTA3NSwibmJmIjoxNjkxMTYxNDc1LCJqdGkiOiJXU1FFdnVUZ0hNWEJtbjNsIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0bvLBpRMipNen3P_aHYBdqeGTiVrClT0l9YSklLz74s",
+    "token_type": "bearer",
+    "expires_in": 3600
+}
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+3. Me
+endpoint : 127.0.0.1:8000/api/auth/me
+method : POST
+required parameter :
+- Bearer token
+and the result simmilar like this :
+{
+    "id": 2,
+    "fullname": "irfan susilo",
+    "username": "irfancoba",
+    "last_login": null,
+    "created_by": null,
+    "updated_by": null,
+    "created_at": "2023-08-04T06:31:54.000000Z",
+    "updated_at": "2023-08-04T06:31:54.000000Z"
+}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
+4. Refresh
+endpoint : 127.0.0.1:8000/api/auth/refresh
+method : POST
+required parameter :
+- Bearer token
+and the result simmilar like this :
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTY5MTEzMjM3NiwiZXhwIjoxNjkxMTM2MDI0LCJuYmYiOjE2OTExMzI0MjQsImp0aSI6ImZKUDdMcWpIVnY4S0laa2YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.E6ATiTVZ7SzDwbSc9j49wNac3QMhK38xwfLbC4BBTxE",
+    "token_type": "bearer",
+    "expires_in": 3600
+}
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+5. Logout
+endpoint : 127.0.0.1:8000/api/auth/logout
+method : POST
+required parameter :
+- Bearer token
+and the result simmilar like this :
+{
+    "message": "Successfully logged out"
+}
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+5. Import user
+endpoint : 127.0.0.1:8000/api/auth/import/user
+method : POST
+required parameter :
+- Bearer token
+- File
+and the result simmilar like this :
+{
+    "message": "Import Success",
+    "code": 200
+}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+6. Read all ruas
+endpoint : 127.0.0.1:8000/api/auth/ruas?page=2
+method : POST
+required parameter :
+- Bearer token
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+and the result simmilar like this :
+{
+    "code": 200,
+    "message": null,
+    "data": {
+        "current_page": 2,
+        "data": [
+            {
+                "id": 11,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:20:10.000000Z",
+                "updated_at": "2023-08-04T15:20:10.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 12,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:23:52.000000Z",
+                "updated_at": "2023-08-04T15:23:52.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 13,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:24:34.000000Z",
+                "updated_at": "2023-08-04T15:24:34.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 14,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:25:23.000000Z",
+                "updated_at": "2023-08-04T15:25:23.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 15,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:25:57.000000Z",
+                "updated_at": "2023-08-04T15:25:57.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 16,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:27:02.000000Z",
+                "updated_at": "2023-08-04T15:27:02.000000Z",
+                "ruas_coordinates": []
+            },
+            {
+                "id": 17,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:27:26.000000Z",
+                "updated_at": "2023-08-04T15:27:26.000000Z",
+                "ruas_coordinates": [
+                    {
+                        "id": 1,
+                        "ruas_id": 17,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:27:26.000000Z",
+                        "updated_at": "2023-08-04T15:27:26.000000Z"
+                    },
+                    {
+                        "id": 2,
+                        "ruas_id": 17,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:27:26.000000Z",
+                        "updated_at": "2023-08-04T15:27:26.000000Z"
+                    },
+                    {
+                        "id": 3,
+                        "ruas_id": 17,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:27:26.000000Z",
+                        "updated_at": "2023-08-04T15:27:26.000000Z"
+                    }
+                ]
+            },
+            {
+                "id": 18,
+                "ruas": "sdas",
+                "km_awal": "112",
+                "km_akhir": "123",
+                "status": 0,
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:28:17.000000Z",
+                "updated_at": "2023-08-04T15:28:17.000000Z",
+                "ruas_coordinates": [
+                    {
+                        "id": 4,
+                        "ruas_id": 18,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:28:17.000000Z",
+                        "updated_at": "2023-08-04T15:28:17.000000Z"
+                    },
+                    {
+                        "id": 5,
+                        "ruas_id": 18,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:28:17.000000Z",
+                        "updated_at": "2023-08-04T15:28:17.000000Z"
+                    },
+                    {
+                        "id": 6,
+                        "ruas_id": 18,
+                        "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                        "created_by": "10",
+                        "updated_by": "10",
+                        "created_at": "2023-08-04T15:28:17.000000Z",
+                        "updated_at": "2023-08-04T15:28:17.000000Z"
+                    }
+                ]
+            }
+        ],
+        "first_page_url": "http://127.0.0.1:8000/api/auth/ruas?page=1",
+        "from": 11,
+        "last_page": 2,
+        "last_page_url": "http://127.0.0.1:8000/api/auth/ruas?page=2",
+        "links": [
+            {
+                "url": "http://127.0.0.1:8000/api/auth/ruas?page=1",
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://127.0.0.1:8000/api/auth/ruas?page=1",
+                "label": "1",
+                "active": false
+            },
+            {
+                "url": "http://127.0.0.1:8000/api/auth/ruas?page=2",
+                "label": "2",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://127.0.0.1:8000/api/auth/ruas",
+        "per_page": 10,
+        "prev_page_url": "http://127.0.0.1:8000/api/auth/ruas?page=1",
+        "to": 18,
+        "total": 18
+    }
+}
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+5. Read one ruas
+endpoint : 127.0.0.1:8000/api/auth/ruas/17
+method : GET
+required parameter :
+- Bearer token
+and the result simmilar like this :
+{
+    "code": 200,
+    "message": null,
+    "data": {
+        "id": 17,
+        "ruas": "sdas",
+        "km_awal": "112",
+        "km_akhir": "123",
+        "status": 0,
+        "created_by": "10",
+        "updated_by": "10",
+        "created_at": "2023-08-04T15:27:26.000000Z",
+        "updated_at": "2023-08-04T15:27:26.000000Z",
+        "ruas_coordinates": [
+            {
+                "id": 1,
+                "ruas_id": 17,
+                "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:27:26.000000Z",
+                "updated_at": "2023-08-04T15:27:26.000000Z"
+            },
+            {
+                "id": 2,
+                "ruas_id": 17,
+                "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:27:26.000000Z",
+                "updated_at": "2023-08-04T15:27:26.000000Z"
+            },
+            {
+                "id": 3,
+                "ruas_id": 17,
+                "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+                "created_by": "10",
+                "updated_by": "10",
+                "created_at": "2023-08-04T15:27:26.000000Z",
+                "updated_at": "2023-08-04T15:27:26.000000Z"
+            }
+        ]
+    }
+}
+
+
+6. Create ruas
+endpoint : 127.0.0.1:8000/api/auth/ruas
+method : POST
+required parameter :
+- Bearer token
+- km_awal
+- km_akhir
+- status
+optional parameter :
+- coordinates
+and the result simmilar like this :
+{
+    "code": 200,
+    "message": "Create success",
+    "data": {
+        "ruas": "sdas",
+        "km_awal": 112,
+        "km_akhir": "123",
+        "status": 0,
+        "created_by": 10,
+        "updated_by": 10,
+        "updated_at": "2023-08-04T15:28:17.000000Z",
+        "created_at": "2023-08-04T15:28:17.000000Z",
+        "id": 18,
+        "coordinates": {
+            "ruas_id": 18,
+            "coordinates": "{\"lat\":37.772,\"lng\":-122.214}",
+            "created_by": 10,
+            "updated_by": 10,
+            "updated_at": "2023-08-04T15:28:17.000000Z",
+            "created_at": "2023-08-04T15:28:17.000000Z",
+            "id": 6
+        }
+    }
+}
+
+
+6. Update ruas
+endpoint : 127.0.0.1:8000/api/auth/ruas/12
+method : PUT
+required parameter :
+- Bearer token
+- km_awal
+- km_akhir
+- status
+optional parameter :
+- coordinates
+and the result simmilar like this :
+{
+    "code": 200,
+    "message": "Update success",
+    "data": {
+        "id": 12,
+        "ruas": "sdas",
+        "km_awal": "112",
+        "km_akhir": "123",
+        "status": 0,
+        "created_by": "10",
+        "updated_by": "10",
+        "created_at": "2023-08-04T15:23:52.000000Z",
+        "updated_at": "2023-08-04T15:43:56.000000Z"
+    }
+}
+
+
+7. Delete ruas
+endpoint : 127.0.0.1:8000/api/auth/ruas/10
+method : DELETE
+required parameter :
+- Bearer token
+
+and the result simmilar like this :
+{
+    "code": 200,
+    "message": "Delete success",
+    "data": {
+        "id": 10,
+        "ruas": "sdas",
+        "km_awal": "112",
+        "km_akhir": "123",
+        "status": 0,
+        "created_by": "10",
+        "updated_by": "10",
+        "created_at": "2023-08-04T15:15:53.000000Z",
+        "updated_at": "2023-08-04T15:15:53.000000Z"
+    }
+}

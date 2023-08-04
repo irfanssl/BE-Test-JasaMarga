@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "163b382f-dfa5-4711-8eda-040f903fa694",
+		"name": "BE-Test-JasaMarga",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "12624791"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/auth/register?fullname=irfan susilo&username=irfancoba10&password=irfan123",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					],
+					"query": [
+						{
+							"key": "fullname",
+							"value": "irfan susilo"
+						},
+						{
+							"key": "username",
+							"value": "irfancoba10"
+						},
+						{
+							"key": "password",
+							"value": "irfan123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:8000/api/auth/login?username=irfancoba5&password=irfan123",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "irfancoba5"
+						},
+						{
+							"key": "password",
+							"value": "irfan123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExMzIzNzYsImV4cCI6MTY5MTEzNTk3NiwibmJmIjoxNjkxMTMyMzc2LCJqdGkiOiI4SGc3Skc5dWg1b2EzM252Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.MFHGhLSVBNeHOwO_ZGGje1OLviZuVVx9vkqorniHKOA"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:8000/api/auth/me"
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExMzIzNzYsImV4cCI6MTY5MTEzNTk3NiwibmJmIjoxNjkxMTMyMzc2LCJqdGkiOiI4SGc3Skc5dWg1b2EzM252Iiwic3ViIjoiMiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.MFHGhLSVBNeHOwO_ZGGje1OLviZuVVx9vkqorniHKOA"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:8000/api/auth/refresh"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTY5MTEzMjM3NiwiZXhwIjoxNjkxMTM2MDI0LCJuYmYiOjE2OTExMzI0MjQsImp0aSI6ImZKUDdMcWpIVnY4S0laa2YiLCJzdWIiOiIyIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.E6ATiTVZ7SzDwbSc9j49wNac3QMhK38xwfLbC4BBTxE"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "127.0.0.1:8000/api/auth/logout"
+			},
+			"response": []
+		},
+		{
+			"name": "Import user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNTE5MjksImV4cCI6MTY5MTE1NTUyOSwibmJmIjoxNjkxMTUxOTI5LCJqdGkiOiJhWlhkUk5VZFdrcXo5RWJZIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.oADI15QqrjYRTnKZ1p6TltUkk0qs_csqbFBF7Qpave0"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Mitra Integrasi Informatika/BE-Test-JasaMarga/storage/app/Book1.xlsx"
+						}
+					]
+				},
+				"url": "127.0.0.1:8000/api/auth/import/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Read all ruas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjE0NzUsImV4cCI6MTY5MTE2NTA3NSwibmJmIjoxNjkxMTYxNDc1LCJqdGkiOiJXU1FFdnVUZ0hNWEJtbjNsIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0bvLBpRMipNen3P_aHYBdqeGTiVrClT0l9YSklLz74s"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/api/auth/ruas?page=2",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"ruas"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read one ruas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjE0NzUsImV4cCI6MTY5MTE2NTA3NSwibmJmIjoxNjkxMTYxNDc1LCJqdGkiOiJXU1FFdnVUZ0hNWEJtbjNsIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0bvLBpRMipNen3P_aHYBdqeGTiVrClT0l9YSklLz74s"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "127.0.0.1:8000/api/auth/ruas/17"
+			},
+			"response": []
+		},
+		{
+			"name": "Create ruas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjE0NzUsImV4cCI6MTY5MTE2NTA3NSwibmJmIjoxNjkxMTYxNDc1LCJqdGkiOiJXU1FFdnVUZ0hNWEJtbjNsIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0bvLBpRMipNen3P_aHYBdqeGTiVrClT0l9YSklLz74s"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ruas\" : \"sdas\",\r\n    \"km_awal\" : 112,\r\n    \"km_akhir\" : \"123\",\r\n    \"status\" : 0,\r\n    \"coordinates\" : [\r\n        { \"lat\": 37.772, \"lng\": -122.214 },\r\n        { \"lat\": 37.772, \"lng\": -122.214 },\r\n        { \"lat\": 37.772, \"lng\": -122.214 }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8000/api/auth/ruas"
+			},
+			"response": []
+		},
+		{
+			"name": "Update ruas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjE0NzUsImV4cCI6MTY5MTE2NTA3NSwibmJmIjoxNjkxMTYxNDc1LCJqdGkiOiJXU1FFdnVUZ0hNWEJtbjNsIiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0bvLBpRMipNen3P_aHYBdqeGTiVrClT0l9YSklLz74s"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ruas\" : \"sdas\",\r\n    \"km_awal\" : 112,\r\n    \"km_akhir\" : \"123\",\r\n    \"status\" : 0,\r\n    \"coordinates\" : [\r\n        { \"lat\": 37.772, \"lng\": -122.214 },\r\n        { \"lat\": 37.772, \"lng\": -122.214 },\r\n        { \"lat\": 37.772, \"lng\": -122.214 }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "127.0.0.1:8000/api/auth/ruas/12"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete ruas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2OTExNjUxMjEsImV4cCI6MTY5MTE2ODcyMSwibmJmIjoxNjkxMTY1MTIxLCJqdGkiOiI1VWxDYWU2dzE3MDh6d3k0Iiwic3ViIjoiMTAiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.HjsLa0tnX9V72bpLInq6n35tW29BAVigpDb348_nSpk"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "127.0.0.1:8000/api/auth/ruas/10"
+			},
+			"response": []
+		}
+	]
+}

@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('ruas_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('username');
-            $table->string('password');
-            $table->timestamp('last_login')->nullable();
+
+            $table->unsignedBigInteger('ruas_id');
+            $table->foreign('ruas_id')->references('id')->on('ruas');
+
+            $table->string('coordinates');
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamp('created_at')->nullable();
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user');
+        Schema::dropIfExists('ruas_coordinates');
     }
 };
